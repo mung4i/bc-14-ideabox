@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from flask import render_template, redirect, url_for, abort, flash
 from flask_login import login_required, current_user
 from . import home
@@ -50,21 +49,3 @@ def deleteIdea():
     flash('Delete successful')
 
     return redirect(url_for('home.ideabox'))
-=======
-from flask import render_template
-
-from flask_login import login_required
-
-from . import home
-
-
-@home.route('/index')
-def homepage():
-    return render_template('home/index.html', title="Welcome")
-
-
-@home.route('/ideabox')
-@login_required
-def ideabox():
-    return render_template('home/ideabox.html', title="IdeaBox")
->>>>>>> b55bd1732826a6919470cb2ebc5c73e9d9081570

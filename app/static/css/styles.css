@@ -1,14 +1,6 @@
-<<<<<<< HEAD
 body, html{
   width: auto;
   height: auto;
-=======
-/* app/static/styles.css */
-
-body, html{
-  width: 100%
-  height: 100%
->>>>>>> b55bd1732826a6919470cb2ebc5c73e9d9081570
 }
 
 body, h1, h2, h3 {
@@ -103,7 +95,6 @@ p.copyright{
   height: 100%;
   margin: 0 auto -4em;
 }
-<<<<<<< HEAD
 
 .flask-pagedown-input{
 
@@ -112,5 +103,3 @@ p.copyright{
   border: 1px dotted black;
   background-color: #f8f8f8;
 }
-=======
->>>>>>> b55bd1732826a6919470cb2ebc5c73e9d9081570

@@ -1,19 +1,13 @@
-#app/ __init__.py
-
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-#local imports
 from config import app_config
-#Login
 from flask_login import LoginManager
-#Migrate import
 from flask_migrate import Migrate
-#Bootstrap import
 from flask_bootstrap import Bootstrap
 
-#initialize db and login manager
 db = SQLAlchemy()
 login_manager = LoginManager()
+
 
 def create_app(config_name):
     app = Flask(__name__, instance_relative_config=True)
@@ -21,14 +15,12 @@ def create_app(config_name):
     app.config.from_pyfile('config.py')
     Bootstrap(app)
     db.init_app(app)
-    #login code
+    # login code
     login_manager.init_app(app)
     login_manager.login_message = "You must be logged in to have access"
     login_manager.login_view = "auth.login"
 
     migrate = Migrate(app, db)
-
-
 
     from app import models
 

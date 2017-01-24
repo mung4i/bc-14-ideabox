@@ -41,7 +41,11 @@ class Data(db.Model):
     __tablename__ = 'data'
 
     id = db.Column(db.Integer, primary_key=True)
+<<<<<<< HEAD
     name = db.Column(db.String(60), unique=True)
+=======
+    title = db.Column(db.String(60), unique=True)
+>>>>>>> b55bd1732826a6919470cb2ebc5c73e9d9081570
     description = db.Column(db.String(200))
     user = db.relationship('User', backref='data',
                            lazy='dynamic')

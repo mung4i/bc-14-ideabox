@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% import "bootstrap/wtf.html" as wtf %}
 {% import "bootstrap/wtf.html" as utils %}
 {% extends "base.html" %}
@@ -8,11 +9,18 @@
         Move to trash
     {% endif %}
 {% endblock %}
+=======
+<!-- app/templates/home/dashboard.html -->
+
+{% extends "base.html" %}
+{% block title %}IdeaBox{% endblock %}
+>>>>>>> b55bd1732826a6919470cb2ebc5c73e9d9081570
 {% block body %}
 <div class="intro-header">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+<<<<<<< HEAD
                     <h1>The IdeaBox</h1>
                     <hr class="intro-divider">
                     <h2> New Idea</h2>
@@ -23,6 +31,14 @@
                     {% endif %}
                     <br />
                     {{ wtf.quick_form(form) }}
+=======
+                <div class="intro-message">
+                    <h1>The IdeaBox</h1>
+                    <h3>Finally</h3>
+                    <hr class="intro-divider">
+                    </ul>
+                </div>
+>>>>>>> b55bd1732826a6919470cb2ebc5c73e9d9081570
             </div>
         </div>
     </div>

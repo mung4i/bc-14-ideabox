@@ -3,14 +3,14 @@ from flask_login import login_required, login_user, logout_user
 from . import auth
 from forms import LoginForm, RegistrationForm
 from .. import db
-from ..models import User
+from ..models import Users
 
 
 @auth.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(email=form.email.data,
+        user = Users(email=form.email.data,
                     username=form.username.data,
                     first_name=form.first_name.data,
                     last_name=form.last_name.data,
@@ -26,7 +26,7 @@ def register():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
+        user = Users.query.filter_by(email=form.email.data).first()
         if user is not None and user.verify_password(form.password.data):
             login_user(user)
             return redirect(url_for('home.ideabox'))

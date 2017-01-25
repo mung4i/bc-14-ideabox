@@ -1,5 +1,6 @@
 <!-- app/templates/home/index.html -->
-
+{% import "bootstrap/wtf.html" as wtf %}-
+{% import "bootstrap/wtf.html" as utils %}
 {% extends "base.html" %}
 {% block title %}{% endblock %}
 {% block body %}
@@ -10,11 +11,26 @@
         <div class="intro-message">
           <h1>IdeaBox<h1>
             <h3>Jot your ideas</h3>
-              {% for idea in ideas %}
               <div class="jumbotron">
-              <h4><li><a href="{{ idea.title }}">{{ idea.description }}</a></li>
+                  {% for idea in ideas %}
+                <h4>
+                  <li>{{ idea.title }}</li>
+                    <ul>{{ idea.description }}</ul>
+                      {% endfor %}
               </div>
-              {% endfor %}
+              <div class="jumbotron">
+                {% for idea in ideas %}
+                  {% if idea%}{{ ideas.title }}
+                    <ul>
+                      <a href='{{ url_for('home.edit_ideabox') }}'>Edit</a>
+                    </ul>
+                      <ul>{{ ideas.description }}</ul>
+
+                  {% endif %}{% endfor %}
+                </h4>
+              </div>
+                <br />
+          
           </ul>
         </div>
       </div>

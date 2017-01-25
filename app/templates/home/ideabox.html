@@ -3,9 +3,9 @@
 {% extends "base.html" %}
 {% block title %}
     {% if add_data %}
-      <a class=btn-default href={{ url_for('home.ideabox')}}>Add idea</a>
+      <a class='btn-default' href={{ url_for('home.ideabox') }}>Add idea</a>
     {% else %}
-      <a class=btn-success href={{ url_for('home.edit_ideabox') }}>Edit ideas</a>
+      <a class="btn-success" href='{{ url_for('home.edit_ideabox', id=data.id) }}'>Edit ideas</a>
     {% endif %}
 {% endblock %}
 {% block body %}
@@ -21,13 +21,12 @@
               {% else %}
                 <h1>Edit your idea<h1>
                   <div class="jumbotron">
-                    {% for idea in ideas %}
+                    {% if data %}
                     <li>
-                      <ul>{{ idea.user_id }}</ul>
-                      <ul>{{ idea.title }}</ul>
-                      <ul>{{ idea.description}}</ul>
+                      <ul>{{ data.title }}</ul>
+                      <ul>{{ data.description}}</ul>
                     </li>
-                    {% endfor %}
+                    {% endif %}
                   </div>
                   <br />
                   {{ wtf.quick_form(form) }}

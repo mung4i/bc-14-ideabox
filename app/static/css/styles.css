@@ -6,7 +6,10 @@ body, html{
 body, h1, h2, h3 {
   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 700
+  padding-top: 1150px;
 }
+
+
 
 a, .navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a{
   color:inherit;
@@ -19,7 +22,7 @@ footer {
 p.copyright{
   margin: 15px 0 0;
 }
-
+/*
 .alert-info{
   width:50%
   margin: auto;
@@ -102,4 +105,4 @@ p.copyright{
 .flask-pagedown-preview{
   border: 1px dotted black;
   background-color: #f8f8f8;
-}
+}*/

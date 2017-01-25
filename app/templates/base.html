@@ -2,15 +2,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>{{ title }} | IdeaBox</title>
+    {% block head %}
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href={{ url_for('static', filename="css/font-awesome.min.css") }} rel="stylesheet">
     <link href={{ url_for('static', filename='css/styles.css') }} rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    {% endblock %}
   </head>
-  <body>
     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
         <div class="container topnav">
           <div class="navbar-header">
@@ -20,7 +19,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand topnav" href="{{ url_for('home.ideabox') }}">IdeaBox</a>
+              {%block title %}<a class="navbar-brand topnav" href="{{ url_for('home.ideabox') }}">IdeaBox</a>{% endblock %}
           </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -37,9 +36,9 @@
           </div>
         </div>
     </nav>
+    <body>
     <div class="wrapper">
       {% block body %}
-      {% endblock %}
       <div class="push"></div>
     </div>
     <footer>
@@ -55,11 +54,15 @@
                         <li><a href="{{ url_for('auth.login') }}">Login</a></li>
                       {% endif %}
                     </ul>
-                    <p class="copyright text-muted small">Copyright © 2017</p>
-                    <p>github.com/mungaiandela</p>
+                    <p class="copyright text-muted small">Copyright © 2017
+                    <a class="fa fa-github fa-2x" href="https://github.com/mungaiandela" target="_blank">
+
+                    </a>
+                    </p>
                 </div>
             </div>
         </div>
     </footer>
+      {% endblock %}
   </body>
 </html>

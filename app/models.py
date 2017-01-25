@@ -3,7 +3,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from app import db, login_manager
 
-
 class User(UserMixin, db.Model):
 
     __tablename__ = 'users'
@@ -17,6 +16,8 @@ class User(UserMixin, db.Model):
     data_id = db.Column(db.Integer, db.ForeignKey('data.id'))
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     is_admin = db.Column(db.Boolean, default=False)
+
+    data = db.relationship("Data", backref=db.backref("users", lazy="joined"))
 
     @property
     def password(self):
@@ -33,18 +34,18 @@ class User(UserMixin, db.Model):
         return '<User: {}>'.format(self.username)
 
     @login_manager.user_loader
-    def load_user(user_id):
-        return User.query.get(int(user_id))
+    def load_user(users_id):
+        return User.query.get(int(users_id))
 
 
 class Data(db.Model):
     __tablename__ = 'data'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(60), unique=True)
+    title = db.Column(db.String(60), unique=True)
     description = db.Column(db.String(200))
-    user = db.relationship('User', backref='data',
-                           lazy='dynamic')
+    # users_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    # user = db.relationship('User', backref='user', lazy='dynamic')
 
     def __repr__(self):
         return '<Data: {}>'.format(self.title)
@@ -56,8 +57,8 @@ class Role(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(60), unique=True)
     description = db.Column(db.String(200))
-    user = db.relationship('User', backref='role',
-                           lazy='dynamic')
+    # user = db.relationship('User', backref='role',
+    #                        lazy='dynamic')
 
     def __repr__(self):
         return 'Role: {}>'.format(self.name)

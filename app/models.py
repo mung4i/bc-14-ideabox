@@ -1,3 +1,4 @@
+'''Models ORM Classes which are migrated to the database'''
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -23,6 +24,10 @@ class Users(UserMixin, db.Model):
         self.first_name = first_name
         self.last_name = last_name
         self.password = password
+
+    '''
+    password methods that implement hashing feature extended from werkzeug security module
+    '''
 
     @property
     def password(self):
@@ -50,8 +55,6 @@ class Data(db.Model):
     title = db.Column(db.String(60), unique=True)
     description = db.Column(db.String(200))
     users_email = db.Column(db.String(60), db.ForeignKey('users.email'))
-
-
 
     def __repr__(self):
         return '<Data: {}>'.format(self.title)

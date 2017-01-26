@@ -1,4 +1,4 @@
-<!-- app/template/base.html -->
+#base template
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -71,9 +71,9 @@
     {% block footer %}
     <div class="footer">
       {% if current_user.is_authenticated %}
-        <a href="{{ url_for('home.list_ideas') }}">Home</a>
-        <a href="{{ url_for('home.ideabox') }}">My ideas</a>
-        <a href="{{ url_for('home.edit_ideabox') }}">Edit</a>
+        | <a href="{{ url_for('home.list_ideas') }}">Home</a>  |
+        <a href="{{ url_for('home.ideabox') }}">My ideas</a> |
+        <a href="{{ url_for('home.edit_ideabox') }}">Edit</a> |
       {% endif %}
     <p class="copyright text-muted small">Copyright © 2017
     <a class="fa fa-github fa-2x" href="https://github.com/mungaiandela" target="_blank">

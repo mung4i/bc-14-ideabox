@@ -1,3 +1,6 @@
+'''
+Forms class that serves WTF forms to app templates.
+'''
 from flask_wtf import FlaskForm
 from wtforms import Form, SubmitField, TextField, validators
 from wtforms.validators import DataRequired

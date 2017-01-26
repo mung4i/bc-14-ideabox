@@ -10,30 +10,24 @@ def check_user():
         abort(403)
 
 @home.route('/index', methods=['POST', 'GET'])
+@home.route('/')
 @login_required
 def list_ideas():
+    #List all ideas function which calls all ideas posted by users and renders to the users' indexpage
     check_user()
     ideas = Data.query.filter_by(users_email=current_user.email).all()
-    form = IdeaboxComments()
-    if form.validate_on_submit():
-        # comment = Comments(comment = form.comment.data, users_email=current_user.email)
-        # db.session.add(comment)
-        # db.session.commit()
-        # comment = Comments.query.all()
-        return redirect(url_for('home.list_ideas'))
-
-
+        # return redirect(url_for('home.list_ideas'))
     return render_template('home/index.html', ideas=ideas, form=form, title="List of ideas")
 
 
 @home.route('/ideabox/new', methods=['POST', 'GET'])
 @login_required
 def ideabox():
-
+    #Form to create new idea built from this method
+    #if user is authenticated a WTForm is rendered from this route
     check_user()
     add_data = True
     form = IdeaboxForm()
-
     if form.validate_on_submit():
         data = Data(
             title=form.title.data,
@@ -53,6 +47,9 @@ def ideabox():
 @home.route('/ideabox/edit/',methods=['POST', 'GET'])
 @login_required
 def edit_ideabox():
+    #edit function called, title cannot be changed
+    #user set description updates the db using an SQLAlchemy
+    #update method.
     check_user()
     add_data = False
     form = IdeaboxForm()
@@ -63,7 +60,4 @@ def edit_ideabox():
         db.session.commit()
         flash('Edit successful')
         return redirect(url_for('home.list_ideas'))
-
-    # form.title.data = data.title
-    # form.description.data = data.description
     return render_template('home/ideabox.html', action="Edit", add_data=add_data, form=form, title="Edit idea", placeholder=form_title)

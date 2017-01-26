@@ -16,14 +16,14 @@ def list_ideas():
     ideas = Data.query.filter_by(users_email=current_user.email).all()
     form = IdeaboxComments()
     if form.validate_on_submit():
-        comment = Comments(comment = form.comment.data, users_email=current_user.email)
-        db.session.add(comment)
-        db.session.commit()
-        comment = Comments.query.all()
+        # comment = Comments(comment = form.comment.data, users_email=current_user.email)
+        # db.session.add(comment)
+        # db.session.commit()
+        # comment = Comments.query.all()
         return redirect(url_for('home.list_ideas'))
 
 
-    return render_template('home/index.html', ideas=ideas, form=form, comment=comment, title="List of ideas")
+    return render_template('home/index.html', ideas=ideas, form=form, title="List of ideas")
 
 
 @home.route('/ideabox/new', methods=['POST', 'GET'])
@@ -54,7 +54,7 @@ def ideabox():
 @login_required
 def edit_ideabox():
     check_user()
-    add_data = True
+    add_data = False
     form = IdeaboxForm()
     form_title=form.title.data
     if form.validate_on_submit():

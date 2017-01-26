@@ -4,7 +4,8 @@ from config import app_config
 from flask_login import LoginManager
 from flask_migrate import Migrate
 from flask_bootstrap import Bootstrap
-from flask_pagedown import PageDown
+from flaskext.markdown import Markdown
+
 
 db = SQLAlchemy()
 login_manager = LoginManager()
@@ -16,14 +17,13 @@ def create_app(config_name):
     app.config.from_pyfile('config.py')
     Bootstrap(app)
     db.init_app(app)
+    Markdown(app)
 
     login_manager.init_app(app)
     login_manager.login_message = "You must be logged in to have access"
     login_manager.login_view = "auth.login"
 
     migrate = Migrate(app, db)
-
-    pagedown = PageDown(app)
 
     from app import models
 

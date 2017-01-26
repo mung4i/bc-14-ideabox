@@ -1,18 +1,17 @@
-<!-- app/templates/auth/login.html -->
-
 {% import "bootstrap/utils.html" as utils %}
 {% import "bootstrap/wtf.html" as wtf %}
 {% extends "base.html" %}
 {% block title %} Login {% endblock %}
 {% block body %}
-<div class="content-section">
-  <br/>
-  {{ utils.flashed_messages() }}
-  <br/>
-  <div class="center">
-    <h1>Login to IdeaBox</h1>
-    <br/>
+<div class="center">
+<div class="login-container">
+  <div class="container">
+    <h1 class="LoginTitle">Login to IdeaBox</h1>
+
+    <div class="form col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-md-4 col-md-offset-4">
     {{ wtf.quick_form(form) }}
   </div>
+  </div>
+</div>
 </div>
 {% endblock %}

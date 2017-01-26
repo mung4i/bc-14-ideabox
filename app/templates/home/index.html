@@ -2,39 +2,28 @@
 {% import "bootstrap/wtf.html" as wtf %}-
 {% import "bootstrap/wtf.html" as utils %}
 {% extends "base.html" %}
-{% block title %}{% endblock %}
 {% block body %}
-<div class="intro-header">
-  <div class="container">
-    <div class="row">
       <div class="col-lg-12">
-        <div class="intro-message">
-          <h1>IdeaBox<h1>
-            <h3>Jot your ideas</h3>
-              <div class="jumbotron">
-                  {% for idea in ideas %}
-                <h4>
-                  <li>{{ idea.title }}</li>
-                    <ul>{{ idea.description }}</ul>
-                      {% endfor %}
-              </div>
-              <div class="jumbotron">
-                {% for idea in ideas %}
-                  {% if idea%}{{ ideas.title }}
-                    <ul>
-                      <a href='{{ url_for('home.edit_ideabox') }}'>Edit</a>
-                    </ul>
-                      <ul>{{ ideas.description }}</ul>
-
-                  {% endif %}{% endfor %}
-                </h4>
-              </div>
-                <br />
-          
-          </ul>
+        <div class="headcontainer">
+          <h2>Jot your ideas</h2>
         </div>
-      </div>
+        <div class="row">
+              {% for idea in ideas %}
+              <div class="col-md-3">
+              <div class="card">
+                <h3 class="titlecontainer">{{ idea.title }}</h3>
+                <div class="mycontainer">
+                    <p class="desccontainer">
+                      {% filter markdown %}{{ idea.description }}{% endfilter %}
+                    <a class="btn btn-xs btn-success" href='{{ url_for('home.edit_ideabox') }}'>Edit</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+              {% endfor %}
     </div>
+
   </div>
-</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 {% endblock %}

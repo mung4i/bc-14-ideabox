@@ -1,26 +1,59 @@
-body, html{
-  width: auto;
-  height: auto;
-}
-
-body, h1, h2, h3 {
-  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 700
-  padding-top: 1150px;
-}
-
-
-
 a, .navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a{
   color:inherit;
 }
+body, html{
+  background-color: #B3E5FC;
+  font-family: 'Arsenal', sans-serif;
+}
+.LoginTitle{
+margin-top: 50px;
+margin-bottom: inherit;
+text-align: center;
+}
 
-footer {
-  padding: 50px 0;
-  background-color: #f8f8f8;
+element.style {
+    margin-top: 0px;
+    padding-top: 50px !important;
+}
+.card{
+  box-shadow:  0 8px 16px 0 rgba(0,0,0,0.2);
+  height:300px;
+}
+.headcontainer{
+  margin-top: 10px;
+  text-align: center;
+  box-shadow:  0 4px 8px 0 rgba(0,0,0,0.1);
+}
+
+.logincontainer{
+  display: flex;
+  justify-content: center;
+}
+.titlecontainer{
+  margin: 20px;
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+  font-size: 1em;
+}
+
+.mycontainer{
+  padding: 2px 16px;
+}
+
+.desccontainer{
+  text-align: center;
+  height: 199px;
 }
 p.copyright{
-  margin: 15px 0 0;
+}
+.alert-info {
+    margin: auto;
+    color: #687430;
+    background-color: #e6ecca;
+    border-color: #aec251;
+}
+.center{
+    padding: 10px;
+    text-align: center;
 }
 /*
 .alert-info{

@@ -1,29 +1,29 @@
 {% import "bootstrap/wtf.html" as wtf %}
 {% import "bootstrap/wtf.html" as utils %}
 {% extends "base.html" %}
-{% block title %}
     {% if add_data %}
       <a class='btn-default' href={{ url_for('home.ideabox') }}>Add idea</a>
     {% else %}
       <a class="btn-success" href='{{ url_for('home.edit_ideabox', id=data.id) }}'>Edit ideas</a>
     {% endif %}
-{% endblock %}
+    {% block nav%}
+    {% endblock %}
+
 {% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-              {% if add_data%}
-              <div class="jumbotron">
+<div class="col-lg-12">
+              <div class="headcontainer">
                 <h1>Post new idea<h1>
               </div>
+              <div class="well">
+                {% if add_data%}
               <br />
               {{ wtf.quick_form(form) }}
               {% else %}
                 <h1>Edit your idea<h1>
-                  <div class="jumbotron">
+                  <div class="mycontainer">
                     {% if data %}
                     <li>
-                      <ul>{{ data.title }}</ul>
+                      <ul>{{ data.title (placeholder='Leave this blank') }}</ul>
                       <ul>{{ data.description}}</ul>
                     </li>
                     {% endif %}
@@ -35,4 +35,6 @@
         </div>
     </div>
 </div>
+{% endblock %}
+{% block footer%}
 {% endblock %}

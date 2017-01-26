@@ -18,7 +18,8 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash('Registration successful. Login!')
-        return redirect(url_for('auth.login'))
+        login_user(user)
+        return redirect(url_for('home.ideabox'))
     return render_template('auth/register.html', form=form, title="Register")
 
 

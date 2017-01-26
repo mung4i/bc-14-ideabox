@@ -15,6 +15,7 @@ class Users(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     is_admin = db.Column(db.Boolean, default=False)
     data = db.relationship("Data", backref="users", lazy="dynamic")
+    comments = db.relationship("Comments", backref="users", lazy="dynamic")
 
     def __init__(self, email, username, first_name, last_name, password = []):
         self.email = email
@@ -49,10 +50,23 @@ class Data(db.Model):
     title = db.Column(db.String(60), unique=True)
     description = db.Column(db.String(200))
     users_email = db.Column(db.String(60), db.ForeignKey('users.email'))
-    
+
+
+
     def __repr__(self):
         return '<Data: {}>'.format(self.title)
 
+
+class Comments(db.Model):
+
+    __tablename__ = 'comments'
+
+    id = db.Column(db.Integer, primary_key=True)
+    users_email = db.Column(db.String(60), db.ForeignKey('users.email'))
+    comment = db.Column(db.String(200))
+
+    def __repr__(self):
+        return '<Comments {}>'.format(self.name)
 
 class Roles(db.Model):
     __tablename__ = 'roles'
@@ -64,4 +78,4 @@ class Roles(db.Model):
 
 
     def __repr__(self):
-        return 'Role: {}>'.format(self.name)
+        return '<Role: {}>'.format(self.name)

@@ -17,7 +17,7 @@ def list_ideas():
     check_user()
     ideas = Data.query.filter_by(users_email=current_user.email).all()
         # return redirect(url_for('home.list_ideas'))
-    return render_template('home/index.html', ideas=ideas, form=form, title="List of ideas")
+    return render_template('home/index.html', ideas=ideas, title="List of ideas")
 
 
 @home.route('/ideabox/new', methods=['POST', 'GET'])

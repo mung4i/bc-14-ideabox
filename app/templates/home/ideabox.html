@@ -1,6 +1,5 @@
 {% import "bootstrap/wtf.html" as wtf %}
 {% import "bootstrap/wtf.html" as utils %}
-{% extends "base.html" %}
 {% with errors = get_flashed_messages(category_filter=["error"]) %}
 {% if errors %}
 <div class="alert-message block-message error">
@@ -13,12 +12,12 @@
 </div>
 {% endif %}
 {% endwith %}
+{% extends "base.html" %}
     {% if add_data %}
       <a class='btn-default' href={{ url_for('home.ideabox') }}>Add idea</a>
     {% else %}
       <a class="btn-success" href='{{ url_for('home.edit_ideabox', id=data.id) }}'>Edit ideas</a>
     {% endif %}
-
 {% block body %}
                 {% if add_data%}
                 <div class="center">
@@ -34,8 +33,8 @@
                   <div class="mycontainer">
                     {% if data %}
                     <li>
-                      <ul>{{ data.title (placeholder='Leave this blank') }}</ul>
-                      <ul>{{ data.description}}</ul>
+                      <ul>{{ data.title }}</ul>
+                      <ul>{{ data.description }}</ul>
                     </li>
 
                     {% endif %}

@@ -7,8 +7,8 @@ from wtforms.validators import DataRequired
 from ..models import Users, Data
 
 class IdeaboxForm(FlaskForm):
-    title = TextField('enter title here', validators=[DataRequired()])
-    description = TextField('Enter your new idea **with markdown support**',
+    title = TextField('Title:', validators=[DataRequired()])
+    description = TextField('Description:',
                             validators=[DataRequired()])
     submit = SubmitField('Submit')
 

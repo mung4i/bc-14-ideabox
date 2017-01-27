@@ -32,7 +32,15 @@ element.style {
 .titlecontainer{
   margin: 20px;
   text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-  font-size: 1em;
+  font-size: 2em;
+
+}
+.card-footer{
+  padding: 0.01em 16px;
+    padding-top: 0.01em;
+    padding-right: 16px;
+    padding-bottom: 0.01em;
+    padding-left: 16px;
 }
 
 .mycontainer{
@@ -65,3 +73,4 @@ p.copyright{
   color: #18bc9c;
   font-size: 20px;
 }
+.

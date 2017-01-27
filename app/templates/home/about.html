@@ -2,8 +2,16 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 {% block body %}
-<div class="jumbotron center">
-  <h1>About ideaBox</h1>
-  <p class="lead"> Under dev</p>
+<div class="container">
+  <h1>Comments</h1>
+  {% if query > 0 %}
+    <p>{{ comment }}</p>
+  {% else %}
+  <h6>Comments</h6>
+    {{ wtf.quick_form(form) }}
+    {% for queries in query %}
+    {{ queries.comment }}
+    {% endfor %}
+    {% endif %}
 </div>
 {% endblock %}

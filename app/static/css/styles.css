@@ -43,6 +43,9 @@ element.style {
   text-align: center;
   height: 199px;
 }
+p.desccontainer{
+  margin: -111 0 10px;
+}
 p.copyright{
 }
 .alert-info {
@@ -56,13 +59,11 @@ p.copyright{
     text-align: center;
 }
 .footer {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  background-color: #efefef;
-  text-align: center;
+  clear: both;
+}
+.control-label{
+  color: #18bc9c;
+  font-size: 20px;
 }
 /*
 .alert-info{

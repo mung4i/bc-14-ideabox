@@ -1,6 +1,18 @@
 {% import "bootstrap/wtf.html" as wtf %}
 {% import "bootstrap/wtf.html" as utils %}
 {% extends "base.html" %}
+{% with errors = get_flashed_messages(category_filter=["error"]) %}
+{% if errors %}
+<div class="alert-message block-message error">
+  <a class="close" href="#">×</a>
+  <ul>
+    {%- for msg in errors %}
+    <li>{{ msg }}</li>
+    {% endfor -%}
+  </ul>
+</div>
+{% endif %}
+{% endwith %}
     {% if add_data %}
       <a class='btn-default' href={{ url_for('home.ideabox') }}>Add idea</a>
     {% else %}
@@ -11,20 +23,21 @@
                 {% if add_data%}
                 <div class="center">
                     <div class="form col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-md-4 col-md-offset-4">
-                <h1 class="LoginTitle">Post new idea<h1>
-              <br />
-              {{ wtf.quick_form(form) }}
+                      <h1 class="LoginTitle">Post new idea<h1>
+                        <br />
+                        {{ wtf.quick_form(form) }}
                 </div>
               {% else %}
               <div class="center">
                 <div class="form col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-md-4 col-md-offset-4">
-                <h1 class="LoginTitle">Edit your idea<h1>
+                  <h1 class="LoginTitle">Edit your idea<h1>
                   <div class="mycontainer">
                     {% if data %}
                     <li>
                       <ul>{{ data.title (placeholder='Leave this blank') }}</ul>
                       <ul>{{ data.description}}</ul>
                     </li>
+
                     {% endif %}
                   </div>
                   <br />

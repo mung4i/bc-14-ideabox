@@ -53,7 +53,6 @@ class Data(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(60), unique=True)
     description = db.Column(db.String(200))
-    comments = db.Column(db.String(200))
     users_email = db.Column(db.String(60), db.ForeignKey('users.email'))
 
     def __repr__(self):
